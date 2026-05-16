@@ -34,7 +34,7 @@ s = ' '.join(temp)
 
 from nltk.stem import  PorterStemmer
 ps = PorterStemmer()
-s = ps.stem(s)
+s = ' '.join(ps.stem(word) for word in temp)
 print(s)
 
 from sklearn.feature_extraction.text import CountVectorizer
@@ -47,8 +47,7 @@ for i in range(len(data)):
     s = s.lower()
     s = s.split()
     s = [word for word in s if word not in stopwords.words('english')]
-    s = ' '.join(s)
-    s = ps.stem(s)
+    s = ' '.join(ps.stem(word) for word in s)
     corpus.append(s)
     
 print(corpus)
